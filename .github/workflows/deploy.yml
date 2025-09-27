@@ -1,4 +1,4 @@
-name: Deploy PHP App to VPS
+name: Deploy para VPS
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./*"
-          target: "/var/www/html"
+          target: "/var/www/minhaapp"
 
       - name: Run deploy commands on VPS
         uses: appleboy/ssh-action@v1.0.3
@@ -44,5 +44,5 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/html
+            cd /var/www/minhaapp
             echo "✅ Deploy finalizado no servidor"
